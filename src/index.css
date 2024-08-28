@@ -1,0 +1,29 @@
+body {
+  /* без фіксованої ширини марджин не приміняється */
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #f4f1f8;
+
+  font-family: "Roboto", sans-serif;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+input {
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 375px) {
+  body {
+    max-width: 375px;
+    padding: 30px 16px;
+  }
+}

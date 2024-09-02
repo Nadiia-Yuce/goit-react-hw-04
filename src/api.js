@@ -8,11 +8,11 @@ export async function getImages(newQuery, page) {
       client_id: API_KEY,
       query: newQuery,
       page,
-      per_page: 5,
+      per_page: 10,
       orientation: "landscape",
     },
   });
-  console.log(response.data);
+  // console.log(response.data.results);
 
   return {
     images: response.data.results,

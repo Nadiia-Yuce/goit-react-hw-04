@@ -1,5 +1,21 @@
 .list {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 85px;
+  padding: 0;
+}
+
+.item {
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: transform 250ms ease;
+}
+
+.item:hover,
+.item:focus {
+  transform: scale(1.07);
 }

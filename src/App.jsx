@@ -6,6 +6,7 @@ import ImageGallery from "./components/ImageGallery/ImageGallery";
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "./components/ImageModal/ImageModal";
+import css from "./App.module.css";
 
 export default function App() {
   const [album, setAlbum] = useState([]);
@@ -35,7 +36,7 @@ export default function App() {
           ...fetchedColection.images,
         ]);
         setTotalPages(fetchedColection.totalPages);
-      } catch (error) {
+      } catch {
         setError(true);
       } finally {
         setLoader(false);
@@ -72,13 +73,15 @@ export default function App() {
   };
 
   return (
-    <div>
+    <div className={css.container}>
       <SearchBar onSubmit={handleSearch} />
       {album !== null && <ImageGallery images={album} onClick={openModal} />}
       {album.length > 0 && !loader && <LoadMoreBtn handleLoad={loadMore} />}
       {error && <ErrorMessage />}
-      {loader && <MagnifyingGlass />}
-      {page >= totalPages && <p>End of the Colection!!</p>}
+      <div className={css.loader}>{loader && <MagnifyingGlass />}</div>
+      {page >= totalPages && (
+        <p className={css.endNot}>End of the Colection!!</p>
+      )}
       {modal.isOpen && <ImageModal params={modal} onClose={closeModal} />}
     </div>
   );

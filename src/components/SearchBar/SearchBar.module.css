@@ -1,0 +1,38 @@
+.header {
+  background-color: rgba(91, 158, 217, 0.7);
+  padding: 10px 30px;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+.form {
+  text-align: center;
+}
+.input {
+  padding: 8px 16px;
+  border-radius: 4px 0 0 4px;
+  border: transparent;
+  width: 220px;
+  color: rgb(91, 158, 217);
+  background-color: #fafafa;
+}
+.input::placeholder {
+  color: rgb(156, 193, 226);
+}
+
+.btn {
+  padding: 8px 16px;
+  border-radius: 0 4px 4px 0;
+  border: transparent;
+  background-color: rgb(91, 158, 217);
+  color: #fafafa;
+  transition: background-color 350ms ease, color 350ms ease;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: rgb(194, 226, 255);
+  color: rgb(91, 158, 217);
+}

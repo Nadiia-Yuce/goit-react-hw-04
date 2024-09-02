@@ -1,9 +1,9 @@
 body {
   /* без фіксованої ширини марджин не приміняється */
-  max-width: 1024px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 30px;
-  background-color: #f4f1f8;
+  padding-bottom: 30px;
+  background-color: #fafafa;
 
   font-family: "Roboto", sans-serif;
 }
@@ -21,9 +21,9 @@ button {
   cursor: pointer;
 }
 
-@media screen and (max-width: 375px) {
+/* @media screen and (max-width: 375px) {
   body {
     max-width: 375px;
     padding: 30px 16px;
-  }
-}
+  } */
+/* } */

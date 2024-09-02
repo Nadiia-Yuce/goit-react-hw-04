@@ -20,6 +20,7 @@ export default function App() {
     isOpen: false,
     url: "",
     alt: "",
+    class: "",
   });
 
   useEffect(() => {
@@ -56,6 +57,20 @@ export default function App() {
     setPage(page + 1);
   };
 
+  useEffect(() => {
+    if (modal.isOpen) {
+      setModal(prev => ({
+        ...prev,
+        class: "animate__animated animate__fadeIn",
+      }));
+    } else {
+      setModal(prev => ({
+        ...prev,
+        class: "animate__animated animate__fadeOut",
+      }));
+    }
+  }, [modal.isOpen]);
+
   const openModal = img => {
     setModal({
       isOpen: true,
@@ -65,11 +80,19 @@ export default function App() {
   };
 
   const closeModal = () => {
-    setModal({
-      isOpen: false,
-      url: "",
-      alt: "",
-    });
+    setModal(prev => ({
+      ...prev,
+      class: "animate__animated animate__fadeOut",
+    }));
+
+    setTimeout(() => {
+      setModal({
+        isOpen: false,
+        url: "",
+        alt: "",
+        class: "",
+      });
+    }, 500);
   };
 
   return (

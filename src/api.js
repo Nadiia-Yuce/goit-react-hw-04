@@ -9,6 +9,7 @@ export async function getImages(newQuery, page) {
       query: newQuery,
       page,
       per_page: 5,
+      orientation: "landscape",
     },
   });
   console.log(response.data);

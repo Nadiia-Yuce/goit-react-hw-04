@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { getImages } from "./api";
+import { MagnifyingGlass } from "react-loader-spinner";
 import SearchBar from "./components/SearchBar/SearchBar";
 import ImageGallery from "./components/ImageGallery/ImageGallery";
-import { MagnifyingGlass } from "react-loader-spinner";
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
+import ImageModal from "./components/ImageModal/ImageModal";
 
 export default function App() {
   const [album, setAlbum] = useState([]);
@@ -14,6 +15,11 @@ export default function App() {
   const [query, setQuery] = useState("");
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(999);
+  const [modal, setModal] = useState({
+    isOpen: false,
+    url: "",
+    alt: "",
+  });
 
   useEffect(() => {
     if (query === "") {
@@ -49,14 +55,31 @@ export default function App() {
     setPage(page + 1);
   };
 
+  const openModal = img => {
+    setModal({
+      isOpen: true,
+      url: img.urls.regular,
+      alt: img.alt_description,
+    });
+  };
+
+  const closeModal = () => {
+    setModal({
+      isOpen: false,
+      url: "",
+      alt: "",
+    });
+  };
+
   return (
     <div>
       <SearchBar onSubmit={handleSearch} />
-      {album !== null && <ImageGallery images={album} />}
+      {album !== null && <ImageGallery images={album} onClick={openModal} />}
       {album.length > 0 && !loader && <LoadMoreBtn handleLoad={loadMore} />}
       {error && <ErrorMessage />}
       {loader && <MagnifyingGlass />}
       {page >= totalPages && <p>End of the Colection!!</p>}
+      {modal.isOpen && <ImageModal params={modal} onClose={closeModal} />}
     </div>
   );
 }

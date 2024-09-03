@@ -10,10 +10,11 @@ export default function SearchBar({ onSubmit }) {
       toast("❗️The field can not be empty!", {
         duration: 4000,
       });
+      return;
     }
 
     onSubmit(query);
-    evt.target.reset();
+    // evt.target.reset();
   };
 
   return (
